@@ -79,9 +79,11 @@ print the matrix
 void print_matrix(struct matrix *m) {
   int i = 0;
   int j = 0;
+  //  printf( "%i", m -> m[i][j] );
+  printf("%i %i \n", m -> rows, m -> cols );
   printf( "[ ");
   for(; i < m -> rows; i++ ) {
-    for(; j < m -> cols; j++)
+    for(j = 0; j < m -> cols; j++)
       printf( " %d ", m -> m[i][j] );
     printf( "\n" );
   }
@@ -95,6 +97,12 @@ Returns:
 turns m in to an identity matrix
 */
 void ident(struct matrix *m) {
+  int i = 0;
+  int j = 0;
+  for(; i < m -> rows; i++ ) {
+    for(j = 0; j < m -> cols; j++)
+      
+  }
 }
 
 
