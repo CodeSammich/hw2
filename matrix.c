@@ -77,6 +77,15 @@ Returns:
 print the matrix
 */
 void print_matrix(struct matrix *m) {
+  int i = 0;
+  int j = 0;
+  printf( "[ ");
+  for(; i < m -> rows; i++ ) {
+    for(; j < m -> cols; j++)
+      printf( " %d ", m -> m[i][j] );
+    printf( "\n" );
+  }
+  printf( " ]" );
 }
 
 /*-------------- void ident() --------------
