@@ -79,15 +79,13 @@ print the matrix
 void print_matrix(struct matrix *m) {
   int i = 0;
   int j = 0;
-  //  printf( "%i", m -> m[i][j] );
-  printf("%i %i \n", m -> rows, m -> cols );
-  printf( "[ ");
+  printf( "\n[ ");
   for(; i < m -> rows; i++ ) {
     for(j = 0; j < m -> cols; j++)
-      printf( " %d ", m -> m[i][j] );
+      printf( " %f ", m -> m[i][j] );
     printf( "\n" );
   }
-  printf( " ]" );
+  printf( " ]\n" );
 }
 
 /*-------------- void ident() --------------
@@ -99,9 +97,13 @@ turns m in to an identity matrix
 void ident(struct matrix *m) {
   int i = 0;
   int j = 0;
-  for(; i < m -> rows; i++ ) {
-    for(j = 0; j < m -> cols; j++)
-      
+  for(; i < (m -> rows); i++ ) {
+    for(j = 0; j < (m -> cols); j++) {
+      if( i == j)
+	m -> m[i][j] = 1;
+      else
+	m -> m[i][j] = 0;
+    }
   }
 }
 
@@ -114,6 +116,15 @@ Returns:
 multiply each element of m by x
 */
 void scalar_mult(double x, struct matrix *m) {
+  int i = 0;
+  int j = 0;
+  double original_value;
+  for(; i < (m -> rows); i++ ) {
+    for(j = 0; j < (m -> cols); j++) {
+      original_value = m -> m[i][j];
+      m -> m[i][j] = original_value * x;
+    }
+  }
 }
 
 
@@ -125,6 +136,21 @@ Returns:
 a*b -> b
 */
 void matrix_mult(struct matrix *a, struct matrix *b) {
+  struct matrix* temp;
+  temp = new_matrix( a -> rows, b -> cols );
+  int a_rows = 0;
+  int a_cols = 0;
+  int b_rows = 0;
+  int b_cols = 0;
+  double value = 1;
+  for(; a_rows < a -> rows; a_rows++ ) {
+    for(a_cols = 0; a_cols < a -> cols; a_cols++) {
+      
+      for( b_rows = 0; b_rows > b -> rows; b_rows++)
+	value += a -> m[a_rows][a_cols] * b -> m[b_rows][b_cols];
+      
+    }
+  }
 }
 
 
