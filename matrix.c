@@ -142,16 +142,30 @@ void matrix_mult(struct matrix *a, struct matrix *b) {
   int a_cols = 0;
   int b_rows = 0;
   int b_cols = 0;
-  double value = 1;
-  for(; a_rows < a -> rows; a_rows++ ) {
-    for(a_cols = 0; a_cols < a -> cols; a_cols++) {
-      
-      for( b_rows = 0; b_rows > b -> rows; b_rows++)
+  int current_row = 0;
+  int current_col = 0;
+  double value = 0;
+  
+  for(; current_row < a -> rows; current_row++) {
+    for(current_col = 0; current_col < b -> cols; current_col++){
+      while( a_cols < a -> cols && b_rows < b -> rows) {
 	value += a -> m[a_rows][a_cols] * b -> m[b_rows][b_cols];
-      
+	printf( "value: %f, added value: %f\n", value, a -> m[a_rows][a_cols] * b -> m[b_rows][b_cols] );
+	a_cols++;
+	b_rows++;
+      }
+      temp -> m[current_row][current_col] = value;
+      value = 0;
+
+      a_cols = 0;
+      b_rows = 0;
     }
+    current_row++;
   }
+  print_matrix( temp );
+  b = temp;
 }
+
 
 
 
