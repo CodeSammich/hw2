@@ -34,7 +34,7 @@ int main() {
 
   printf( "\nMatrix Multiply Edges and Transform\n" );
   matrix_mult( edges, transform );
-  print_matrix( transform );
+  //  print_matrix( transform );
   
   free_matrix( transform );
   free_matrix( edges );
