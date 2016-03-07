@@ -31,16 +31,39 @@ int main() {
   ident( edges );
   ident( transform );
 
-  copy_matrix( make_rotX( 45 ), transform); //rotate by 45 degrees
-  print_matrix( transform );
+  copy_matrix( make_translate( 3 * XRES/4, YRES / 8, 0), transform); 
+  //  print_matrix( transform );
   //draw square in lower left corner
   
   add_edge( edges, 0, 0, 0, 0, YRES / 4, 0 );
   add_edge( edges, XRES / 4, 0, 0, XRES / 4, YRES / 4, 0 );
   add_edge( edges, 0, 0, 0, XRES / 4, 0, 0 );
   add_edge( edges, 0, YRES / 4, 0, XRES / 4, YRES / 4, 0 );
+
+  add_edge( edges, 0, 3 * YRES / 4, 0, 0, YRES, 0 );
+  add_edge( edges, 0, 3 * YRES / 4, 0, XRES / 4, 3 * YRES / 4, 0 );
+  add_edge( edges, XRES / 4, 3 * YRES / 4, 0, XRES / 4, YRES, 0 );
+  add_edge( edges, XRES / 4, YRES, 0, 0, YRES, 0 );
+
+  add_edge( edges, 0, 0, 0, XRES, YRES / 2, 0 );
+  add_edge( edges, XRES, YRES / 2, 0, 0, YRES, 0 );
+  add_edge( edges, 0, YRES, 0, 0, 0, 0 );
+
+  add_edge( edges, 3 * XRES / 8, 3 * YRES / 4, 0, 3 * XRES / 8, 3 * YRES /8, 0);
+  add_edge( edges, 5 * XRES / 8, 3 * YRES / 4, 0, 5 * XRES / 8, 3 * YRES /8, 0);
+
+  add_edge( edges, 3 * XRES / 8, YRES / 4, 0, XRES / 2, 0, 0 );
+  add_edge( edges, 5 * XRES / 8, YRES / 4, 0, XRES / 2, 0, 0 );
+  add_edge( edges, 5 * XRES / 8, YRES / 4, 0, 3 * XRES / 8, YRES / 4, 0);
   
-  draw_lines( edges, s, c);
+  draw_lines( edges, s, c );
+  
+  
+  //  matrix_mult( edges, transform );
+  //  print_matrix( edges );
+  
+  //  draw_lines( transform, s, c);
+  //  print_matrix( transform );
   /*
   copy_matrix( make_translate( 0, YRES / 2, 0 ), transform );
   draw_lines( edges, s, c);
